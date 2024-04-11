@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "procedure_name": {
+      "type": "string",
+      "description": "Procedure name"
+    },
+    "steps": {
+      "type": "array",
+      "description": "Step of the procedure",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "description": "Steps of the procedure",
+            "type": "integer"
+          },
+          "header": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "number",
+          "header",
+          "description"
+        ]
+      }
+    }
+  },
+  "required": [
+    "procedure_name",
+    "steps"
+  ]
+}

@@ -1,0 +1,1 @@
+I want to extract bacterial sample collection procedure out of this text.
