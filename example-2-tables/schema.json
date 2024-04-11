@@ -1,51 +1,53 @@
 {
   "type": "object",
   "properties": {
-    "insurance_company_name": {
-      "type": "string",
-      "description": "user name"
+    "company_name": {
+      "type": "string"
     },
     "contact_details": {
       "type": "string"
     },
     "main_products": {
-      "type": "object",
-      "properties": {
-        "product_name": {
-          "type": "string"
-        },
-        "deductibles": {
-          "type": "array",
-          "items": {
-            "type": "number"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string"
+          },
+          "deductibles": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "insured_risk": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "covered": {
+                  "type": "boolean"
+                },
+                "limitation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "covered"
+              ]
+            }
           }
         },
-        "insured_risk": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "covered": {
-                "type": "boolean"
-              },
-              "limitation": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "name",
-              "covered"
-            ]
-          }
-        }
-      },
-      "required": [
-        "product_name",
-        "insured_risk"
-      ]
+        "required": [
+          "product_name",
+          "insured_risk"
+        ]
+      }
     },
     "supplementary_products": {
       "type": "array",
@@ -69,7 +71,7 @@
     }
   },
   "required": [
-    "insurance_company_name",
+    "company_name",
     "main_products"
   ]
 }

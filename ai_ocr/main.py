@@ -1,11 +1,9 @@
 import os
 import tempfile
 from typing import Annotated
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 from starlette.responses import JSONResponse, Response
-
-env_file = find_dotenv(".env.dev")
-load_dotenv(env_file)
+load_dotenv()
 import uvicorn
 
 from fastapi import FastAPI, UploadFile, File
