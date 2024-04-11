@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "insurance_company_name": {
+      "type": "string",
+      "description": "user name"
+    },
+    "contact_details": {
+      "type": "string"
+    },
+    "main_products": {
+      "type": "object",
+      "properties": {
+        "product_name": {
+          "type": "string"
+        },
+        "deductibles": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "insured_risk": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "covered": {
+                "type": "boolean"
+              },
+              "limitation": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "covered"
+            ]
+          }
+        }
+      },
+      "required": [
+        "product_name",
+        "insured_risk"
+      ]
+    },
+    "supplementary_products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "supplementary_to": {
+            "type": "string"
+          },
+          "insured_risk": {
+            "type": "string"
+          },
+          "deductibles": {
+            "type": "string"
+          },
+          "insured_sum": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "insurance_company_name",
+    "main_products"
+  ]
+}

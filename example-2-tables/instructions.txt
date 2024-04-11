@@ -1,0 +1,3 @@
+I want to extract list of insurance products.
+I want to see what product and modules covers what insured risks (with limits).
+I'm also interested in deductibles and additional benefits.
