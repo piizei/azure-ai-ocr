@@ -28,6 +28,10 @@ Note: The powershell scripts don't work very well, the bash scripts are better..
 ### Example 2
 [example 2 - Complex tables](example-2-tables) Let's find some insurance products from a more complex table.
 
+### Notes on the examples
+- I used https://bjdash.github.io/JSON-Schema-Builder/ to create the json-schemas in the example folders. If the keys in the json model are not self-explanatory, you should use description fields to tell the LLM model what you mean by each key to increase accuracy.
+
+
 ## Develop
 
 Install with poetry
