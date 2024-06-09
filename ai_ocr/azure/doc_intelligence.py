@@ -17,6 +17,5 @@ def get_ocr_results(file_path: str, output: str = "markdown") -> AnalyzeResult:
         poller = client.begin_analyze_document("prebuilt-layout",
                                                analyze_request=f,
                                                content_type="application/octet-stream",
-                                               features=["keyValuePairs"],
                                                output_content_format=output)
     return poller.result()
