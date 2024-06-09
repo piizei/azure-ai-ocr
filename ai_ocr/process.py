@@ -28,5 +28,4 @@ def process_pdf(file_to_ocr: str, prompt: str, json_schema: str, config: Config 
         # Reduce the size of the images by removing the last one
         reduced_imgs = reduced_imgs[:-1]
     structured = get_structured_data(ocr_result.content, prompt, json_schema, reduced_imgs)
-    x = parse_json_markdown(structured.content)
-    return json.dumps(x)
+    return parse_json_markdown(structured.content)

@@ -1,3 +1,4 @@
+import json
 import os
 import tempfile
 from typing import Annotated
@@ -44,7 +45,7 @@ async def extract(
                        prompt=prompt.decode(),
                        json_schema=json_schema.decode())
     os.remove(tmp_file_name)
-    return Response(content=response, media_type='application/json')
+    return Response(content=json.dumps(response), media_type='application/json')
 
 
 if __name__ == "__main__":
