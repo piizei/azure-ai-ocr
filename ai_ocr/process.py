@@ -1,5 +1,6 @@
 import glob
 import json
+import os
 
 from langchain_core.output_parsers.json import parse_json_markdown
 
@@ -12,10 +13,10 @@ from ai_ocr.model import Config
 
 def process_pdf(file_to_ocr: str, prompt: str, json_schema: str, config: Config = Config()) -> any:
     ocr_result = get_ocr_results(file_to_ocr)
-    pdf_path = file_to_ocr.replace(file_to_ocr.split("\\")[-1], "")
+    pdf_path, _ = os.path.split(file_to_ocr)
     if config.vision_capable:
         pdf_to_pages(file_to_ocr)
-    imgs = glob.glob(f"{pdf_path}\\page*.png")
+    imgs = glob.glob(os.path.join(pdf_path, "page*.png"))
     # limit imgs by default
     imgs = imgs[:config.max_images]
     imgs = list(map(lambda x: load_image(x), imgs))
