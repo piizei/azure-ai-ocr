@@ -49,5 +49,5 @@ jobs:
           file: ./DockerfileUi
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: piizei/azure-ai-ocr-ui:latest
           labels: ${{ steps.meta.outputs.labels }}

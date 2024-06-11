@@ -32,6 +32,15 @@ Note: The powershell scripts don't work very well, the bash scripts are better..
 - I used https://bjdash.github.io/JSON-Schema-Builder/ to create the json-schemas in the example folders. If the keys in the json model are not self-explanatory, you should use description fields to tell the LLM model what you mean by each key to increase accuracy.
 
 
+## User interface
+User interface is provided for testing purposes only.
+To run it locally, install 
+```bash
+poetry install --with ui
+```
+an run `./ui.sh` in the root folder. (env is picked from .env file in the root folder) 
+
+
 ## Develop
 
 Install with poetry
