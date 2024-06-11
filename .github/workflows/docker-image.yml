@@ -42,12 +42,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      - name: Build and push Docker image for UI
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
-        with:
-          context: .
-          file: ./DockerfileUi
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: piizei/azure-ai-ocr-ui:latest
-          labels: ${{ steps.meta.outputs.labels }}
