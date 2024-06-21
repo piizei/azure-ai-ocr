@@ -32,7 +32,8 @@ class ExtractionOutput(BaseModel):
 async def extract(
         pdf: Annotated[UploadFile, File(...)],
         prompt: Annotated[UploadFile, File(...)],
-        json_schema: Annotated[UploadFile, File(...)],
+        json_schema: Annotated[UploadFile, File(...)]
+
 ):
     pdf = await pdf.read()
     prompt = await prompt.read()
@@ -41,12 +42,34 @@ async def extract(
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
         tmp.write(pdf)
         tmp_file_name = tmp.name
-    response = process_pdf(file_to_ocr=tmp_file_name,
+    try:
+        response = process_pdf(file_to_ocr=tmp_file_name,
                        prompt=prompt.decode(),
                        json_schema=json_schema.decode())
+    except Exception as e:
+        response = {"error": str(e)}
     os.remove(tmp_file_name)
     return Response(content=json.dumps(response), media_type='application/json')
 
+@app.post("/extract/{type}")
+async def extract_type(
+        pdf: Annotated[UploadFile, File(...)],
+        prompt: Annotated[UploadFile, File(...)],
+        json_schema: Annotated[UploadFile, File(...)],
+        type: str
+):
+    file = await pdf.read()
+    prompt = await prompt.read()
+    json_schema = await json_schema.read()
+    with tempfile.NamedTemporaryFile(delete=False, suffix=f".{type}") as tmp:
+        tmp.write(pdf)
+        tmp_file_name = tmp.name
+    response = process_pdf(file_to_ocr=tmp_file_name,
+                       prompt=prompt.decode(),
+                       json_schema=json_schema.decode(),
+                       type=type)
+    os.remove(tmp_file_name)
+    return Response(content=json.dumps(response), media_type='application/json')
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

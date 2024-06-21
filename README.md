@@ -38,8 +38,7 @@ To run it locally, install
 ```bash
 poetry install --with ui
 ```
-an run `./ui.sh` in the root folder. (env is picked from .env file in the root folder) 
-
+then run `./ui.sh` in the root folder. (env is picked from .env file in the root folder)
 
 ## Develop
 

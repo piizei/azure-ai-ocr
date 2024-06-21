@@ -11,6 +11,7 @@ optional = true
 
 [tool.poetry.group.ui.dependencies]
 streamlit = "^1.35.0"
+pandas = "^2.2.2"
 
 
 [tool.poetry.dependencies]

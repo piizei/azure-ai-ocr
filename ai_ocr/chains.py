@@ -21,11 +21,11 @@ def get_structured_data(pages: str, prompt: str, json_schema: str, images=[]) ->
 
     Here is the output schema:
     ```""" + json_schema + "```"
-
     prompt = ChatPromptTemplate.from_messages(messages)
     if len(images) > 0:
-        prompt.append(HumanMessage("There are also images available that you can use to verify the ocr information."))
+        prompt.append(HumanMessage("Use these images to verify the ocr information."))
     for img in images:
+        print("adding image")
         prompt.append(
             HumanMessage(content=[{"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img}"}}]))
     model = get_llm()

@@ -5,7 +5,7 @@ from azure.core.credentials import AzureKeyCredential
 from ai_ocr.azure.config import get_config
 
 config = get_config()
-kwargs = {"api_version": "2023-10-31-preview"}
+kwargs = {"api_version": "2024-02-29-preview"}
 client = document_analysis_client = DocumentIntelligenceClient(endpoint=config["doc_intelligence_endpoint"],
                                                                credential=AzureKeyCredential(config["doc_intelligence_key"]),
                                                                **kwargs)
